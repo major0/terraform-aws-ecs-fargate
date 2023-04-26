@@ -50,6 +50,11 @@ variable "app_mesh" {
   })
 }
 
+variable "architecture" {
+  default     = "X86_64"
+  description = "Select the target architecture. [X86_64, ARM64]"
+  type        = string
+}
 
 variable "assign_public_ip" {
   default     = false
@@ -319,6 +324,13 @@ variable "requires_compatibilities" {
   default     = ["EC2", "FARGATE"]
   description = "The launch type the task is using. This enables a check to ensure that all of the parameters used in the task definition meet the requirements of the launch type."
   type        = set(string)
+
+
+}
+variable "runtime" {
+  default     = "LINUX"
+  description = "Select the os runtime. [WINDOWS_SERVER_2019_FULL, WINDOWS_SERVER_2019_CORE, WINDOWS_SERVER_2022_FULL, and WINDOWS_SERVER_2022_CORE]"
+  type        = string
 }
 
 variable "security_groups" {

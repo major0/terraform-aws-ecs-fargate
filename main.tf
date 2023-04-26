@@ -177,6 +177,11 @@ resource "aws_ecs_task_definition" "this" {
     }
   }
 
+  runtime_platform {
+    operating_system_family = upper(var.runtime)
+    cpu_architecture        = upper(var.architecture)
+  }
+
   dynamic "proxy_configuration" {
     for_each = try(var.app_mesh.enabled, false) ? [true] : []
 
